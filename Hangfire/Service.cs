@@ -1,4 +1,4 @@
-namespace Sabio.Services.Interfaces
+namespace SendAnalyticsEmail
 {
     public class AnalyticsInfoService
     {
@@ -17,7 +17,7 @@ namespace Sabio.Services.Interfaces
 
             MailAddress[] emails = new MailAddress[]
             {
-                //new MailAddress("wmaldonado@mailinator.com", "Wendy Maldonado"),
+                // add additional recipeients with new MailAddress("address@address.com", "name"),
                 new MailAddress("address@address.com", "name")
             };
 
@@ -29,6 +29,7 @@ namespace Sabio.Services.Interfaces
             emailService.Send(emails, from, subject, htmlBody, htmlContent);
         }
 
+        // this method will reach into the database, calling a procedure to get data
         private List<LogEvents_GetAnalyticsInfoService> GetAnalyticsData()
         {
             List<LogEvents_GetAnalyticsInfoService> results = new List<LogEvents_GetAnalyticsInfoService>();
@@ -38,6 +39,7 @@ namespace Sabio.Services.Interfaces
                 parameters => {},
                 (reader, set) =>
                 {
+                    // lazy loading
                     data = new LogEvents_GetAnalyticsInfoService();
                     int startingIndex = 0;
 

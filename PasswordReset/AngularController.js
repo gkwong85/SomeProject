@@ -1,11 +1,11 @@
 (function () {
     "use strict";
-    var app = angular.module('BlakWealth');
+    var app = angular.module('app');
 
     app.controller('forgotPasswordController', forgotPasswordController);
-    forgotPasswordController.$inject = ['forgotPasswordService', '$window', '$scope', 'alertService', '$timeout'];
+    forgotPasswordController.$inject = ['forgotPasswordService', '$window'];
 
-    function forgotPasswordController(forgotPasswordService, $window, $scope, alertService, $timeout) {
+    function forgotPasswordController(forgotPasswordService, $window) {
         var vm = this;
         var searchParams = new URLSearchParams(location.search);
         vm.forgotPassword = _forgotPasswordForm;
